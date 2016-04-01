@@ -1,2 +1,1 @@
-# PEDCO
-Pedco
+Git for school project for PEDCO
