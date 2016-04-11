@@ -2,12 +2,6 @@
 index.css
  ----\Pics
      PageIcon.ico
- ----\Pages
-     ----\2016
-         ----\April
-		   5-0.html
-		   5-1.html
-
 A basic idea of how we could structure the website’s directory.
 
 Make changes as you see necessary.
