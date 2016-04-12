@@ -1,0 +1,7 @@
+﻿index.php
+index.css
+ ----\Pics
+     PageIcon.ico
+A basic idea of how we could structure the website’s directory.
+
+Make changes as you see necessary.
