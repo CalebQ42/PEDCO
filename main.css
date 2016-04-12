@@ -1,0 +1,40 @@
+html, body {
+background-color: #333333;
+color: #FFFFFF;
+font-family: arial;
+margin: 0px 90px;
+}
+
+#main {
+background-color: #FFFFFF;
+color: #000000;
+padding: 3px;
+}
+
+#rosterTable {
+width: 100%;
+}
+
+h1 {
+font-size: 72px;
+text-align: center;
+}
+
+.button {
+background-color: #FF0000;
+color: #FFFFFF;
+border: 1px solid #000000;
+}
+
+table, td {
+border: 1px solid #000000;
+border-collapse: collapse;
+}
+
+td {
+padding: 3px;
+}
+
+th {
+background-color: #CCCCCC;
+}
