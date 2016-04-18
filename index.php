@@ -14,7 +14,7 @@ if ($pageTitle == "") {
 	}
 }else {
 	foreach($conn->query('SELECT * FROM pages') as $r) {
-		if ($r['title'] == $pageTitle) {
+		if (strtolower($r['title']) == $pageTitle) {
 			echo $r['html'];
 			break;
 		}
