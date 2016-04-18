@@ -6,13 +6,13 @@ session_start();
 <title>Pages</title>
 </head>
 <body>
-<a href="pagecreator.php">Create New</a>
-<table border="1">
-<tr bgcolor="gray">
-<td>Page Title</td><td>Delete</td>
-</tr>
 <?php
 if ($_SESSION['loggedin'] == true) {
+	echo '<a href="pagecreator.php">Create New</a>';
+	echo '<table border="1">';
+	echo '<tr bgcolor="gray">';
+	echo '<td>Page Title</td><td>Delete</td>';
+	echo '</tr>';
     include "../sqllogin.php";
     foreach ($conn->query("SELECT * FROM pages") as $r) {
 	    echo '<tr>';
@@ -20,7 +20,7 @@ if ($_SESSION['loggedin'] == true) {
 	    echo '</tr>';
     }
 }else {
-    echo 'Access denied.';
+    echo 'Access denied.<br /><a href="../login.php">Click Here</a> to login.';
 }
 
 ?>
