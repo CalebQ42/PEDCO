@@ -6,7 +6,7 @@
 <body>
 <div id="main">
 <?php
-$pageTitle = $_REQUEST['title'];
+$pageTitle = strtolower($_REQUEST['title']);
 include "sqllogin.php";
 if ($pageTitle == "") {
 	foreach($conn->query('SELECT * FROM pages WHERE id=1') as $r) {
