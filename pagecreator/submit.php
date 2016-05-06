@@ -13,7 +13,7 @@ foreach ($conn->query("SELECT * FROM pages") as $r) {
 }
 
 if ($match == true) {
-	$sql = "UPDATE pages SET html='$html' WHERE id='$pageid'";
+	$sql = "UPDATE pages SET html='$html', title='$title' WHERE id='$pageid'";
 }else {
 	$sql = "INSERT INTO pages (`title`, `html`) VALUES ('$title', '$html')";
 }

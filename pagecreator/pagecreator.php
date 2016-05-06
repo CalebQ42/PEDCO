@@ -4,6 +4,7 @@ session_start();
 <html>
 <head>
 <title>Page Form</title>
+<script type="text/javascript" src="pagecreator.js"></script>
 </head>
 <body>
 <style type="text/css">
@@ -30,11 +31,19 @@ if ($_SESSION['loggedin'] == true) {
 	echo '<table><tr>';
 	echo '<td>Title</td><td><input type="text" id="title" name="title" value="' . $title . '"></td>';
 	echo '</tr><tr>';
-	echo '<td>HTML</td><td><textarea id="html" name="html" rows="30" cols="10">' . $html . '</textarea></td>';
+	/*echo '<td>Category</td><td><select name="category">';
+	foreach ($conn->query("SELECT * FROM categories") as $r) {
+		echo '<option value="' . $r[id] . '">' . $r[name]  . '</select>';
+	}
+	echo '</tr><tr>';
+	*/
+	echo '<td>BBCode</td><td>';
+	include 'buttons.php';
+	echo '<textarea id="html" name="html" rows="60" cols="20" style="width:600;height:200;">' . $html . '</textarea></td>';
 	echo '</tr><tr>';
 	echo '<td>Submit</td><td><input type="submit" value="submit" /></td>';
 	echo '</tr></table>';
-	echo '<input type="hidden" name="id" value="' . $pageid . '"/>';
+	echo '<input type="hidden" name="id" id="id" value="' . $pageid . '"/>';
 	echo '</form>';
 }else {
 	echo 'Access denied. Click <a href="../login.php">here</a> to login';
