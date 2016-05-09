@@ -5,6 +5,7 @@ session_start();
 <head>
 <title>Page Form</title>
 <script type="text/javascript" src="pagecreator.js"></script>
+<script type="text/javascript" src="ajax.js"></script>
 </head>
 <body>
 <style type="text/css">
@@ -27,7 +28,7 @@ if ($pageid == "") {
 }
 
 if ($_SESSION['loggedin'] == true) {
-	echo '<form action="submit.php" method="post">';
+	echo '<form method="post">';
 	echo '<table><tr>';
 	echo '<td>Title</td><td><input type="text" id="title" name="title" value="' . $title . '"></td>';
 	echo '</tr><tr>';
@@ -41,10 +42,11 @@ if ($_SESSION['loggedin'] == true) {
 	include 'buttons.php';
 	echo '<textarea id="html" name="html" rows="60" cols="20" style="width:600;height:200;">' . $html . '</textarea></td>';
 	echo '</tr><tr>';
-	echo '<td>Submit</td><td><input type="submit" value="submit" /></td>';
+	echo '<td>Submit</td><td><input type="button" value="Submit" onclick="sendData()" /></td>';
 	echo '</tr></table>';
 	echo '<input type="hidden" name="id" id="id" value="' . $pageid . '"/>';
 	echo '</form>';
+	echo '<div id="responseDiv"></div>';
 }else {
 	echo 'Access denied. Click <a href="../login.php">here</a> to login';
 }

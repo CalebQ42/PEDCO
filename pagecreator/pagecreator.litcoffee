@@ -40,23 +40,32 @@ youtube = ->
   return
 
 colorText = ->
-    color = prompt('Hexadecimal or predefined color')
-    if color != '' and url != null
-        str = '[color=' + color + ']Text[/color]'
-    return
+  color = prompt('Hexadecimal or predefined color')
+  if color != '' and color != null
+    str = '[color=' + color + ']Text[/color]'
+  document.getElementById('html').value = document.getElementById('html').value + str
+  return
 
 bold = ->
-  document.getElementById('html').value = document.getElementById('html').value + "[b][/b]"
+  document.getElementById('html').value = document.getElementById('html').value + '[b][/b]'
   return
 
 underline = ->
-  document.getElementById('html').value = document.getElementById('html').value + "[u][/u]"
+  document.getElementById('html').value = document.getElementById('html').value + '[u][/u]'
   return
 
 italics = ->
-    document.getElementById('html').value = document.getElementById('html').value + "[i][/i]"
-    return
+  document.getElementById('html').value = document.getElementById('html').value + '[i][/i]'
+  return
 
 strikethrough = ->
-    document.getElementById('html').value = document.getElementById('html').value + "[s][/s]"
-    return
+  document.getElementById('html').value = document.getElementById('html').value + '[s][/s]'
+  return
+
+unorderedList = ->
+  document.getElementById('html').value = document.getElementById('html').value + '[ul]\n* Item 1\n[/ul]'
+  return
+
+orderedList = ->
+  document.getElementById('html').value = document.getElementById('html').value + '[ol]\n* Item 1\n[/ol]'
+  return
