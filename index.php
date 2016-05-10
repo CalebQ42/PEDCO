@@ -2,7 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-	<title>Portage E.D.C.</title>
+	<?php
+	echo '<title>Portage E.D.C. - '. $_REQUEST['title'] . '</title>'
+	?>
 	<link href="favicon.png" rel="shortcut icon" type="image/x-icon" />
 	<link href="main.css" rel="stylesheet" type="text/css" />
 	<style type="text/css">.auto-style1 {
@@ -44,6 +46,7 @@ Portage Indiana is located in the heart of the Nation’s Steel Capital and offe
 </center>-->
 <?php
 $pageTitle = strtolower($_REQUEST['title']);
+$pageTitle = str_replace('_', ' ', $pageTitle);
 include "sqllogin.php";
 if ($pageTitle == "") {
 	foreach($conn->query('SELECT * FROM pages WHERE id=1') as $r) {
