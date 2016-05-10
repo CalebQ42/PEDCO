@@ -9,7 +9,7 @@ sendData = ->
 
   xhttp.onreadystatechange = ->
     if xhttp.readyState == READY and xhttp.status == OK
-      document.writeln(xhttp.responseText)
+      document.getElementById('responseDiv').innerHTML = xhttp.responseText
     return
 
   xhttp.open 'POST', 'submit.php', true

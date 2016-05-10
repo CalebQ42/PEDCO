@@ -46,6 +46,13 @@ colorText = ->
   document.getElementById('html').value = document.getElementById('html').value + str
   return
 
+customFont = ->
+  font = prompt('Enter font family name (must be web friendly)')
+  if font != '' and font != null
+    str = '[font=' + font + ']Text[/color]'
+    document.getElementById('html').value = document.getElementById('html').value + str
+  return
+
 bold = ->
   document.getElementById('html').value = document.getElementById('html').value + '[b][/b]'
   return

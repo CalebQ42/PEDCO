@@ -18,5 +18,5 @@ if ($match == true) {
 	$sql = "INSERT INTO pages (`title`, `html`) VALUES ('$title', '$html')";
 }
 $conn->exec($sql);
-echo 'Updated<br /><a href="index.php">Click here</a> to go back.';
+echo 'Updated<!--<br /><a href="index.php">Click here</a> to go back.-->';
 ?>

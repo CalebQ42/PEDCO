@@ -38,7 +38,7 @@ if ($_SESSION['loggedin'] == true) {
 	}
 	echo '</tr><tr>';
 	*/
-	echo '<td>BBCode</td><td>';
+	echo '<td>Content</td><td>';
 	include 'buttons.php';
 	echo '<textarea id="html" name="html" rows="60" cols="20" style="width:600;height:200;">' . $html . '</textarea></td>';
 	echo '</tr><tr>';
