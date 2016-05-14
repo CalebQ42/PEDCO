@@ -1,4 +1,8 @@
 # Compile to JavaScript before uploading to server.
+blackClick = ->
+  document.getElementById('input').innerHTML = ''
+  document.getElementById('input').style.display = 'none'
+  document.getElementById('blackout').style.display = 'none'
 
 image = ->
   url = prompt('What is the image\'s URL? (necessary)')
@@ -33,10 +37,38 @@ link = ->
   return
 
 youtube = ->
-  url = prompt('Video URL / Video ID')
-  if url != '' and url != null
-    str = '[youtube]' + url + '[/youtube]'
-    insertAtCursor(html, str)
+  internal = '<table><tr><td>Youtube URL or ID:</td><td><input type="text" id="ytid"></input></td></tr><tr><td>Height:</td><td><input type="text" id="ht"></input></td></tr><tr><td>Width:</td><td><input type="text" id="wt"></input></td></tr><tr><td>Location:</td><td><select id="fl"><option value="il">Inline</option><option value="lf">Left</option><option value="rt">Right</option></select></td></tr></table><button onclick="youtube()">Add</button><button onclick="blackClick()">Cancel</button>'
+  elem = document.getElementById('input')
+  elem.innerHTML = internal
+  document.getElementById('blackout').style.display = 'block'
+  elem.style.display = 'block'
+  return
+
+ytIn = ->
+  str = '[youtube'
+  id = document.getElementById('ytid').value
+  w = document.getElementById('wt').value
+  h = document.getElementById('ht').value
+  fl = document.getElementById('fl').value
+  if id == ''
+    document.getElementById('input').innerHTML = ''
+    document.getElementById('blackout').style.display = 'none'
+    document.getElementById('input').style.display = 'none'
+  else
+    if w != ''
+      str += ' width=' + w
+    if h != ''
+      str += ' height=' + h
+    if fl != 'il'
+      if fl == 'lf'
+        str += ' left'
+      else if fl == 'rt'
+        str += ' right'
+    str += ']' + id + '[/youtube]'
+    document.getElementById('input').innerHTML = ''
+    document.getElementById('input').style.display = 'none'
+    document.getElementById('blackout').style.display = 'none'
+    insertAtCursor(html,str)
   return
 
 colorText = ->
@@ -76,27 +108,27 @@ unorderedList = ->
 orderedList = ->
   insertAtCursor(html, '[ol]\n* Item 1\n[/ol]')
   return
-  
+
  heading1 = ->
    insertAtCursor(html, '[t1][/t1]')
    return
- 
+
  heading2 = ->
    insertAtCursor(html, '[t2][/t2]')
    return
- 
+
  heading3 = ->
    insertAtCursor(html, '[t3][/t3]')
    return
- 
+
  heading4 = ->
    insertAtCursor(html, '[t4][/t4]')
    return
-   
+
  heading5 = ->
    insertAtCursor(html, '[t5][/t5]')
    return
-   
+
 heading6 = ->
   insertAtCursor(html, '[t6][/t6]')
   return

@@ -25,7 +25,6 @@ myField.value += myValue;
 </script>
 <script type="text/javascript" src="pagecreator.js"></script>
 <script type="text/javascript" src="ajax.js"></script>
-<script type="text/javascript" src="addfuncs.js"></script>
 </head>
 <body>
 <style type="text/css">
