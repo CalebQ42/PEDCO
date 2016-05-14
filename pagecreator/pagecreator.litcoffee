@@ -17,7 +17,7 @@ image = ->
     if title != '' and title != null
       str += ' title=\'' + title + '\''
     str += ']' + url + '[/img]'
-    document.getElementById('html').value = document.getElementById('html').value + str
+    insertAtString(html, str)
   return
 
 link = ->
@@ -29,50 +29,74 @@ link = ->
       str += '=' + url + ']' + txt + '[/url]'
     else
       str += ']' + url + '[/url]'
-    document.getElementById('html').value = document.getElementById('html').value + str
+    insertAtCursor(html, str)
   return
 
 youtube = ->
   url = prompt('Video URL / Video ID')
   if url != '' and url != null
     str = '[youtube]' + url + '[/youtube]'
-    document.getElementById('html').value = document.getElementById('html').value + str
+    insertAtCursor(html, str)
   return
 
 colorText = ->
   color = prompt('Hexadecimal or predefined color')
   if color != '' and color != null
     str = '[color=' + color + ']Text[/color]'
-  document.getElementById('html').value = document.getElementById('html').value + str
+    insertAtCursor(html, str)
   return
 
 customFont = ->
   font = prompt('Enter font family name (must be web friendly)')
   if font != '' and font != null
     str = '[font=' + font + ']Text[/color]'
-    document.getElementById('html').value = document.getElementById('html').value + str
+    insertAtCursor(html, str)
   return
 
 bold = ->
-  document.getElementById('html').value = document.getElementById('html').value + '[b][/b]'
+  insertAtCursor(html, '[b][/b]')
   return
 
 underline = ->
-  document.getElementById('html').value = document.getElementById('html').value + '[u][/u]'
+  insertAtCursor(html, '[u][/u]')
   return
 
 italics = ->
-  document.getElementById('html').value = document.getElementById('html').value + '[i][/i]'
+  insertAtCursor(html, '[i][/i]')
   return
 
 strikethrough = ->
-  document.getElementById('html').value = document.getElementById('html').value + '[s][/s]'
+  insertAtCursor(html, '[s][/s]')
   return
 
 unorderedList = ->
-  document.getElementById('html').value = document.getElementById('html').value + '[ul]\n* Item 1\n[/ul]'
+  insertAtCursor(html, '[ul]\n* Item 1\n[/ul]')
   return
 
 orderedList = ->
-  document.getElementById('html').value = document.getElementById('html').value + '[ol]\n* Item 1\n[/ol]'
+  insertAtCursor(html, '[ol]\n* Item 1\n[/ol]')
+  return
+  
+ heading1 = ->
+   insertAtCursor(html, '[t1][/t1]')
+   return
+ 
+ heading2 = ->
+   insertAtCursor(html, '[t2][/t2]')
+   return
+ 
+ heading3 = ->
+   insertAtCursor(html, '[t3][/t3]')
+   return
+ 
+ heading4 = ->
+   insertAtCursor(html, '[t4][/t4]')
+   return
+   
+ heading5 = ->
+   insertAtCursor(html, '[t5][/t5]')
+   return
+   
+heading6 = ->
+  insertAtCursor(html, '[t6][/t6]')
   return
