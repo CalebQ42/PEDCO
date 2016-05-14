@@ -34,7 +34,7 @@ height: 100px;
 }
 #input{
 	  background-color:white;
-	  position:absolute;
+	  position:fixed;
 	  text-align: center;
 	  width: 350px;
 	  z-index:2;
