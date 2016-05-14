@@ -3,6 +3,7 @@ blackClick = ->
   document.getElementById('input').innerHTML = ''
   document.getElementById('input').style.display = 'none'
   document.getElementById('blackout').style.display = 'none'
+  return
 
 image = ->
   url = prompt('What is the image\'s URL? (necessary)')
@@ -25,14 +26,25 @@ image = ->
   return
 
 link = ->
-  url = prompt('Where do you want it to link to?')
-  if url != '' and url != null
-    txt = prompt('What do you want the link to say? (leave blank so it uses the url as the link text)')
-    str = '[url'
-    if txt != ''
+  internal = '<table><tr><td>URL:</td><td><input type="text" id="url"></input></td></tr><tr><td>Link Text:</td><td><input type="text" id="txt"></input></td></tr></table><button onclick="lkIn()">Add</button><button onclick="blackClick()">Cancel</button>'
+  elem = document.getElementById('input')
+  elem.innerHTML = internal
+  document.getElementById('blackout').style.display = 'block'
+  elem.style.display = 'block'
+  return
+
+lkIn = ->
+  str = '[url'
+  url = document.getElementById('url').value
+  txt = document.getElementById('txt').value
+  if url == ''
+    blackClick()
+  else
+    if txt == ''
       str += '=' + url + ']' + txt + '[/url]'
     else
       str += ']' + url + '[/url]'
+    blackClick()
     insertAtCursor(html, str)
   return
 
@@ -65,9 +77,7 @@ ytIn = ->
       else if fl == 'rt'
         str += ' right'
     str += ']' + id + '[/youtube]'
-    document.getElementById('input').innerHTML = ''
-    document.getElementById('input').style.display = 'none'
-    document.getElementById('blackout').style.display = 'none'
+    blackClick()
     insertAtCursor(html,str)
   return
 
