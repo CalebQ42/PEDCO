@@ -75,8 +75,9 @@ if ($_SESSION['loggedin'] == true) {
 	echo '<td>Category</td><td><select name="category">';
 	echo '<option>-----</option>';
 	foreach ($conn->query("SELECT * FROM categories") as $r) {
-		echo '<option value="' . $r[id] . '">' . $r[name]  . '</select>';
+		echo '<option value="' . $r[id] . '">' . $r[name]  . '</option>';
 	}
+	echo '</select>';
 	echo '</tr><tr>';
 	echo '<td>Content</td><td>';
 	include 'buttons.php';
