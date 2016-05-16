@@ -5,6 +5,8 @@ sendData = ->
   id = document.getElementById('id').value
   title = document.getElementById('title').value
   html = document.getElementById('html').value
+  category = document.getElementById('category').value
+  onmenu = document.getElementById('onmenu').value
   xhttp = new XMLHttpRequest
 
   xhttp.onreadystatechange = ->
@@ -14,5 +16,5 @@ sendData = ->
 
   xhttp.open 'POST', 'submit.php', true
   xhttp.setRequestHeader 'Content-type', 'application/x-www-form-urlencoded'
-  xhttp.send 'id=' + id + '&title=' + title + '&html=' + html
+  xhttp.send 'id=' + id + '&title=' + title + '&html=' + html + '&category=' + category + '&onmenu=' + onmenu
   return

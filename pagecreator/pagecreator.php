@@ -72,12 +72,14 @@ if ($_SESSION['loggedin'] == true) {
 	echo '<table><tr>';
 	echo '<td>Title</td><td><input type="text" id="title" name="title" value="' . $title . '"></td>';
 	echo '</tr><tr>';
-	echo '<td>Category</td><td><select name="category">';
+	echo '<td>Category</td><td><select name="category" id="category">';
 	echo '<option>-----</option>';
 	foreach ($conn->query("SELECT * FROM categories") as $r) {
 		echo '<option value="' . $r[id] . '">' . $r[name]  . '</option>';
 	}
 	echo '</select>';
+	echo '<tr></tr>';
+	echo '<td>Link on drop-down menu</td><td><input type="checkbox" name="onmenu" id="onmenu" onclick="disableCat()" /></td>';
 	echo '</tr><tr>';
 	echo '<td>Content</td><td>';
 	include 'buttons.php';
