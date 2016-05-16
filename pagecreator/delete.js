@@ -1,4 +1,4 @@
-var OK, READY, deletePage;
+var OK, READY, deleteCategory, deletePage;
 
 READY = 4;
 
@@ -14,6 +14,20 @@ deletePage = function(id) {
     }
   };
   xhttp.open("POST", "delete.php", true);
+  xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+  xhttp.send("id=" + id);
+};
+
+deleteCategory = function(id) {
+  var xhttp;
+  xhttp = new XMLHttpRequest;
+  xhttp.onreadystatechange = function() {
+    if (xhttp.readyState === READY && xhttp.status === OK) {
+      alert("Category deleted");
+      document.getElementById('categoryList').innerHTML = xhttp.responseText;
+    }
+  };
+  xhttp.open("POST", "catDelete.php", true);
   xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
   xhttp.send("id=" + id);
 };

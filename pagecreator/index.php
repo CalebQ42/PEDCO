@@ -31,7 +31,7 @@ if ($_SESSION['loggedin'] == true) {
 	echo '</tr>';
 	foreach ($conn->query("SELECT * FROM categories") as $r) {
 		echo '<tr>';
-		echo '<td><a href="categorycreator.php?id=' . $r['id'] . '">' . $r['name'] . '</a></td><td><a href="#">Delete</a></td>';
+		echo '<td><a href="categorycreator.php?id=' . $r['id'] . '">' . $r['name'] . '</a></td><td><a href="#" onclick="deleteCategory(' . $r['id'] . ')">Delete</a></td>';
 		echo '</tr>';
 	}
 	echo '</table>';
