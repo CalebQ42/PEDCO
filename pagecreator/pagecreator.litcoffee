@@ -142,3 +142,14 @@ orderedList = ->
 heading6 = ->
   insertAtCursor(html, '[t6][/t6]')
   return
+  
+ disableCat = ->
+   document.getElementById('category').selectedIndex = "0"
+   document.getElementById('category').disabled = true
+   document.getElementById('onmenu').onclick = enableCat
+   return
+   
+enableCat = ->
+  document.getElementById('category').disabled = false
+  document.getElementById('onmenu').onclick = disableCat
+  return
