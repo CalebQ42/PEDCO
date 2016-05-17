@@ -6,23 +6,14 @@ blackClick = ->
   return
 
 image = ->
-  url = prompt('What is the image\'s URL? (necessary)')
-  if url != '' and url != null
-    width = prompt('What do you want the image\'s width to be? (not necessary)', '')
-    height = prompt('What do you want the image\'s height to be? (not necessary)', '')
-    alt = prompt('What do you want the alternate text to be? (shows when the picture isn\'t loaded) (not necessary)', '')
-    title = prompt('What do you want the title to be? (Shows up when the cursor is hovering over the picture) (not necessary)', '')
-    str = '[img'
-    if width != '' and width != null
-      str += ' width=' + width
-    if height != '' and height != null
-      str += ' height=' + height
-    if alt != '' and alt != null
-      str += ' alt=\'' + alt + '\''
-    if title != '' and title != null
-      str += ' title=\'' + title + '\''
-    str += ']' + url + '[/img]'
-    insertAtString(html, str)
+  internal = '<table><tr><td>Image Input Type:</td><td><select id="iminty" onchange="imgUpChange();showPic();"><option value="url">URL</option><option value="prev">Previously Uploaded Image</option><option value="up">Upload Image</option></select></td></tr><tr id="picType"></tr><tr><td>Height:</td><td><input type="text" id="ht" style="width:100%;"></input></td></tr><tr><td>Width:</td><td><input type="text" id="wt" style="width:100%;"></input></td></tr><tr><td>Title:</td><td><input type="text" id="title" style="width:100%;"></input></td></tr><tr><td>Alternate Text:</td><td><input type="text" id="alt" style="width:100%;"></input></td></tr><tr><td colspan="2"><img id="previmg" height="100"/></td></tr></table><button onclick="imgIn()">Add</button><button onclick="blackClick()">Cancel</button>'
+  elem = document.getElementById('input')
+  elem.innerHTML = internal
+  document.getElementById('blackout').style.display = 'block'
+  elem.style.display = 'block'
+  return
+
+imgIn = ->
   return
 
 link = ->
@@ -142,13 +133,13 @@ orderedList = ->
 heading6 = ->
   insertAtCursor(html, '[t6][/t6]')
   return
-  
+
  disableCat = ->
    document.getElementById('category').selectedIndex = "0"
    document.getElementById('category').disabled = true
    document.getElementById('onmenu').onclick = enableCat
    return
-   
+
 enableCat = ->
   document.getElementById('category').disabled = false
   document.getElementById('onmenu').onclick = disableCat
