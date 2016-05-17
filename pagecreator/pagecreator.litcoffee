@@ -11,9 +11,41 @@ image = ->
   elem.innerHTML = internal
   document.getElementById('blackout').style.display = 'block'
   elem.style.display = 'block'
+  imageUpChange()
+  showPic()
   return
 
 imgIn = ->
+  if document.getElementById('pic').value != null && document.getElementById('pic').value != ""{
+    pic = document.getElementById("pic").value
+    type = document.getElementById("iminty").value
+    ht = document.getElementById("ht").value
+    wt = document.getElementById("wt").value
+    alt = document.getElementById("alt").value
+    title = document.getElementById("title").value
+    str = "[img"
+    if ht != ""{
+      str += ' height=' + ht
+    }
+    if wt != ""{
+      str += ' width=' + wt
+    }
+    if alt != ""{
+      str += ' alt="' + alt
+    }
+    if title != ""{
+      str += ' title="' + title
+    }
+    if type == "up"{
+      //to be implemented
+    }else{
+      str += "]" + pic + "[/img]"
+    }
+    blackClick()
+    insertAtCursor(html,str)
+  }else{
+    blackClick()
+  }
   return
 
 link = ->

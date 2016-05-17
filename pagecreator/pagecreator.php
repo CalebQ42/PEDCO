@@ -23,7 +23,7 @@ function insertAtCursor(myField, myValue) {
 	}
 }
 function showPic(){
-	if (document.getElementById("pic").value != null ||document.getElementById("pic").value != ""){
+	if (document.getElementById("pic").value != null && document.getElementById("pic").value != ""){
 		document.getElementById("previmg").src = document.getElementById("pic").value;
 	}
 }
@@ -31,6 +31,7 @@ function prev(img){
 	document.getElementById("previmg").src = img;
 }
 function imgUpChange(){
+	document.getElementById("previmg").src = "";
 	elem = document.getElementById("picType");
 	type = document.getElementById("iminty").value;
 	str = "<td colspan='2'>";
