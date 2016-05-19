@@ -42,7 +42,7 @@ function imgUpChange(){
 		str += "<select id='pic' style='width:100%;' onchange='showPic()'><?php include "picLookup.php" ?></select></td>";
 		elem.innerHTML = str;
 	}else if (type=="up"){
-		str += "<input type='file' id='pic' style='width:100%;' onchange='showPic()'/></td>";
+		str += "<input type='file' id='pic' name='pic' style='width:100%;' onchange='showPic()'/></td>";
 		elem.innerHTML = str;
 	}
 }

@@ -6,7 +6,7 @@ blackClick = ->
   return
 
 image = ->
-  internal = '<table><tr><td>Image Input Type:</td><td><select id="iminty" onchange="imgUpChange();showPic();"><option value="url">URL</option><option value="prev">Previously Uploaded Image</option><option value="up">Upload Image</option></select></td></tr><tr id="picType"></tr><tr><td>Height:</td><td><input type="text" id="ht" style="width:100%;"></input></td></tr><tr><td>Width:</td><td><input type="text" id="wt" style="width:100%;"></input></td></tr><tr><td>Title:</td><td><input type="text" id="title" style="width:100%;"></input></td></tr><tr><td>Alternate Text:</td><td><input type="text" id="alt" style="width:100%;"></input></td></tr><tr><td colspan="2"><img id="previmg" height="100"/></td></tr></table><button onclick="imgIn()">Add</button><button onclick="blackClick()">Cancel</button>'
+  internal = '<form id="picForm" method="post" enctype="multipart/form-data" action="upload.php"><table><tr><td>Image Input Type:</td><td><select id="iminty" onchange="imgUpChange();showPic();"><option value="url">URL</option><option value="prev">Previously Uploaded Image</option><option value="up">Upload Image</option></select></td></tr><tr id="picType"></tr><tr><td>Height:</td><td><input type="text" id="ht" style="width:100%;"></input></td></tr><tr><td>Width:</td><td><input type="text" id="wt" style="width:100%;"></input></td></tr><tr><td>Title:</td><td><input type="text" id="title" style="width:100%;"></input></td></tr><tr><td>Alternate Text:</td><td><input type="text" id="alt" style="width:100%;"></input></td></tr><tr><td colspan="2"><img id="previmg" height="100"/></td></tr></table><button onclick="imgIn()">Add</button><button onclick="blackClick()">Cancel</button></form>'
   elem = document.getElementById('input')
   elem.innerHTML = internal
   document.getElementById('blackout').style.display = 'block'
@@ -37,7 +37,8 @@ imgIn = ->
       str += ' title="' + title
     }
     if type == "up"{
-      //to be implemented
+      document.getElementById("picForm").submit()
+      str += "]../Pics/" + pic + "[/img]"
     }else{
       str += "]" + pic + "[/img]"
     }
