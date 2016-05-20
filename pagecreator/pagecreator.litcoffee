@@ -1,4 +1,22 @@
 # Compile to JavaScript before uploading to server.
+insertAtCursor = (myField, begin, end) ->
+  start = myField.selectionStart
+  finish = myField.selectionEnd
+  sltd = myField.value.substring(start, finish)
+  txt = ''
+  if end == ''
+    txt = myField.value.substring(0, finish)
+    txt += begin
+    txt += myField.value.substring(finish, myField.value.length)
+  else
+    txt = myField.value.substring(0, start)
+    txt += begin
+    txt += myField.value.substring(start, finish)
+    txt += end
+    txt += myField.value.substring(finish, myField.value.length)
+  myField.innerHTML = txt
+  return
+
 blackClick = ->
   document.getElementById('input').innerHTML = ''
   document.getElementById('input').style.display = 'none'

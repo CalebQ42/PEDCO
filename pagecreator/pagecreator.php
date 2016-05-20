@@ -5,30 +5,12 @@ session_start();
 <head>
 <title>Page Form</title>
 <script type="text/javascript">
-	function insertAtCursor(myField, begin, end) {
-		var start = myField.selectionStart;
-		var finish = myField.selectionEnd;
-		var sltd = myField.value.substring(start,finish);
-		var txt = ""
-		if (end == ""){
-			txt = myField.value.substring(0,finish);
-			txt += begin;
-			txt += myField.value.substring(finish,myField.value.length);
-		}else{
-			txt = myField.value.substring(0,start);
-			txt += begin;
-			txt += myField.value.substring(start,finish);
-			txt += end;
-			txt += myField.value.substring(finish,myField.value.length);
-		}
-		myField.innerHTML = txt;
-	}
 	function showPic(){
 		if (document.getElementById("pic").value != null && document.getElementById("pic").value != "" && document.getElementById("iminty").value!="up"){
-			document.getElementById("previmg").style.display = "block"
+			document.getElementById("previmg").style.display = "block";
 			document.getElementById("previmg").src = document.getElementById("pic").value;
 		}else if (document.getElementById("iminty").value=="up"){
-			document.getElementById("previmg").style.display = "none"
+			document.getElementById("previmg").style.display = "none";
 		}
 	}
 	function prev(img){
