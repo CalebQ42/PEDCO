@@ -107,7 +107,7 @@ if ($_SESSION['loggedin'] == true) {
 	}
 	echo '</select>';
 	echo '<tr></tr>';
-	echo '<td>Link on drop-down menu</td><td><input type="checkbox" name="onmenu" id="onmenu" onclick="disableCat()" /></td>';
+	echo '<td>Link on drop-down menu</td><td><input type="checkbox" name="onmenu" id="onmenu" onclick="disableCat()" checked="checked" /></td>';
 	echo '</tr><tr>';
 	echo '<td>Content</td><td>';
 	include 'buttons.php';
