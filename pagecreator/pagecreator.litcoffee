@@ -16,7 +16,7 @@ image = ->
   return
 
 imgIn = ->
-  if document.getElementById('pic').value != null && document.getElementById('pic').value != ""{
+  if document.getElementById('pic').value != null && document.getElementById('pic').value != ""
     pic = document.getElementById("pic").value
     type = document.getElementById("iminty").value
     ht = document.getElementById("ht").value
