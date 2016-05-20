@@ -23,8 +23,11 @@ function insertAtCursor(myField, myValue) {
 	}
 }
 function showPic(){
-	if (document.getElementById("pic").value != null && document.getElementById("pic").value != ""){
+	if (document.getElementById("pic").value != null && document.getElementById("pic").value != "" && document.getElementById("iminty").value!="up"){
+		document.getElementById("previmg").style.display = "block"
 		document.getElementById("previmg").src = document.getElementById("pic").value;
+	}else if (document.getElementById("iminty").value=="up"){
+		document.getElementById("previmg").style.display = "none"
 	}
 }
 function prev(img){

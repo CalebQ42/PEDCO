@@ -6,7 +6,7 @@ blackClick = ->
   return
 
 image = ->
-  internal = '<form id="picForm" method="post" enctype="multipart/form-data" action="upload.php"><table><tr><td>Image Input Type:</td><td><select id="iminty" onchange="imgUpChange();showPic();"><option value="url">URL</option><option value="prev">Previously Uploaded Image</option><option value="up">Upload Image</option></select></td></tr><tr id="picType"></tr><tr><td>Height:</td><td><input type="text" id="ht" style="width:100%;"></input></td></tr><tr><td>Width:</td><td><input type="text" id="wt" style="width:100%;"></input></td></tr><tr><td>Title:</td><td><input type="text" id="title" style="width:100%;"></input></td></tr><tr><td>Alternate Text:</td><td><input type="text" id="alt" style="width:100%;"></input></td></tr><tr><td colspan="2"><img id="previmg" height="100"/></td></tr></table><button onclick="imgIn()">Add</button><button onclick="blackClick()">Cancel</button></form>'
+  internal = '<table><tr><td>Image Input Type:</td><td><select id="iminty" onchange="imgUpChange();showPic();"><option value="url">URL</option><option value="prev">Previously Uploaded Image</option><option value="up">Upload Image</option></select></td></tr><tr id="picType"></tr><tr><td>Height:</td><td><input type="text" id="ht" style="width:100%;"></input></td></tr><tr><td>Width:</td><td><input type="text" id="wt" style="width:100%;"></input></td></tr><tr><td>Title:</td><td><input type="text" id="title" style="width:100%;"></input></td></tr><tr><td>Alternate Text:</td><td><input type="text" id="alt" style="width:100%;"></input></td></tr><tr><td>Location:</td><td><select id="fl"><option value="il">Inline</option><option value="lf">Left</option><option value="rt">Right</option></select></td></tr><tr><td colspan="2"><img id="previmg" height="100"/></td></tr></table><button onclick="imgIn()">Add</button><button onclick="blackClick()">Cancel</button>'
   elem = document.getElementById('input')
   elem.innerHTML = internal
   document.getElementById('blackout').style.display = 'block'
@@ -23,30 +23,40 @@ imgIn = ->
     wt = document.getElementById("wt").value
     alt = document.getElementById("alt").value
     title = document.getElementById("title").value
+    flt = document.getElementById("fl").value
     str = "[img"
-    if ht != ""{
+    if ht != ""
       str += ' height=' + ht
-    }
-    if wt != ""{
+    if wt != ""
       str += ' width=' + wt
-    }
-    if alt != ""{
-      str += ' alt="' + alt
-    }
-    if title != ""{
-      str += ' title="' + title
-    }
-    if type == "up"{
-      document.getElementById("picForm").submit()
-      str += "]../Pics/" + pic + "[/img]"
-    }else{
+    if alt != ""
+      str += ' alt="' + alt + '"'
+    if title != ""
+      str += ' title="' + title + '"'
+    if fl == "lf"
+      str += " left"
+    else if fl == "rt"
+      str += " right"
+    if type == "up"
+      file = document.getElementById('pic').files[0]
+      formData = new FormData
+      formData.append 'picUp', file, file.name
+      xhr = new XMLHttpRequest
+      xhr.open 'POST', 'upload.php', true
+
+      xhr.onload = ->
+        if !xhr.status == 200
+          alert 'An error occurred!'
+        return
+
+      xhr.send formData
+      str += ']../Pictures/' + file.name + '[/img]' //change directory as necessary
+    else
       str += "]" + pic + "[/img]"
-    }
     blackClick()
     insertAtCursor(html,str)
-  }else{
+  else
     blackClick()
-  }
   return
 
 link = ->
