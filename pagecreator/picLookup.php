@@ -1,5 +1,5 @@
 <?php
-$loc = "../Pics";
+$loc = "../Pictures";
 $pics = scandir($loc);
 foreach ($pics as $v){
   if (strlen($v) >= 4){
