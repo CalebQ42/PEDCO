@@ -74,7 +74,7 @@ lkIn = ->
   if url == ''
     blackClick()
   else
-    if txt == ''
+    if txt != ''
       str += '=' + url + ']' + txt + '[/url]'
     else
       str += ']' + url + '[/url]'
