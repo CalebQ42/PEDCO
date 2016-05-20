@@ -54,7 +54,7 @@ imgIn = ->
     else
       str += "]" + pic + "[/img]"
     blackClick()
-    insertAtCursor(html,str)
+    insertAtCursor(html,str,"")
   else
     blackClick()
   return
@@ -79,7 +79,7 @@ lkIn = ->
     else
       str += ']' + url + '[/url]'
     blackClick()
-    insertAtCursor(html, str)
+    insertAtCursor(html, str,"")
   return
 
 youtube = ->
@@ -112,69 +112,69 @@ ytIn = ->
         str += ' right'
     str += ']' + id + '[/youtube]'
     blackClick()
-    insertAtCursor(html,str)
+    insertAtCursor(html,str,"")
   return
 
 colorText = ->
   color = prompt('Hexadecimal or predefined color')
   if color != '' and color != null
-    str = '[color=' + color + ']Text[/color]'
-    insertAtCursor(html, str)
+    str = '[color=' + color + ']Text'
+    insertAtCursor(html, str,"[/color]")
   return
 
 customFont = ->
   font = prompt('Enter font family name (must be web friendly)')
   if font != '' and font != null
-    str = '[font=' + font + ']Text[/color]'
-    insertAtCursor(html, str)
+    str = '[font=' + font + ']Text'
+    insertAtCursor(html, str,"[/font]")
   return
 
 bold = ->
-  insertAtCursor(html, '[b][/b]')
+  insertAtCursor(html, '[b]',"[/b]")
   return
 
 underline = ->
-  insertAtCursor(html, '[u][/u]')
+  insertAtCursor(html, '[u]',"[/u]")
   return
 
 italics = ->
-  insertAtCursor(html, '[i][/i]')
+  insertAtCursor(html, '[i]',"[/i]")
   return
 
 strikethrough = ->
-  insertAtCursor(html, '[s][/s]')
+  insertAtCursor(html, '[s]',"[/s]")
   return
 
 unorderedList = ->
-  insertAtCursor(html, '[ul]\n* Item 1\n[/ul]')
+  insertAtCursor(html, '[ul]','[/ul]')
   return
 
 orderedList = ->
-  insertAtCursor(html, '[ol]\n* Item 1\n[/ol]')
+  insertAtCursor(html, '[ol]','[/ol]')
   return
 
  heading1 = ->
-   insertAtCursor(html, '[t1][/t1]')
+   insertAtCursor(html, '[t1]','[/t1]')
    return
 
  heading2 = ->
-   insertAtCursor(html, '[t2][/t2]')
+   insertAtCursor(html, '[t2]','[/t2]')
    return
 
  heading3 = ->
-   insertAtCursor(html, '[t3][/t3]')
+   insertAtCursor(html, '[t3]','[/t3]')
    return
 
  heading4 = ->
-   insertAtCursor(html, '[t4][/t4]')
+   insertAtCursor(html, '[t4]','[/t4]')
    return
 
  heading5 = ->
-   insertAtCursor(html, '[t5][/t5]')
+   insertAtCursor(html, '[t5]','[/t5]')
    return
 
 heading6 = ->
-  insertAtCursor(html, '[t6][/t6]')
+  insertAtCursor(html, '[t6]','[/t6]')
   return
 
  disableCat = ->

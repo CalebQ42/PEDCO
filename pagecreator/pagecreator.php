@@ -5,50 +5,51 @@ session_start();
 <head>
 <title>Page Form</title>
 <script type="text/javascript">
-function insertAtCursor(myField, myValue) {
-	if (document.selection) {
-		myField.focus();
-		sel = document.selection.createRange();
-		sel.text = myValue;
+	function insertAtCursor(myField, begin, end) {
+		var start = myField.selectionStart;
+		var finish = myField.selectionEnd;
+		var sltd = myField.value.substring(start,finish);
+		var txt = ""
+		if (end == ""){
+			txt = myField.value.substring(0,finish);
+			txt += begin;
+			txt += myField.value.substring(finish,myField.value.length);
+		}else{
+			txt = myField.value.substring(0,start);
+			txt += begin;
+			txt += myField.value.substring(start,finish);
+			txt += end;
+			txt += myField.value.substring(finish,myField.value.length);
+		}
+		myField.innerHTML = txt;
 	}
-		//MOZILLA/NETSCAPE support
-	else if (myField.selectionStart || myField.selectionStart == '0') {
-			var startPos = myField.selectionStart;
-			var endPos = myField.selectionEnd;
-			myField.value = myField.value.substring(0, startPos)
-			+ myValue
-			+ myField.value.substring(endPos, myField.value.length);
-	} else {
-			myField.value += myValue;
+	function showPic(){
+		if (document.getElementById("pic").value != null && document.getElementById("pic").value != "" && document.getElementById("iminty").value!="up"){
+			document.getElementById("previmg").style.display = "block"
+			document.getElementById("previmg").src = document.getElementById("pic").value;
+		}else if (document.getElementById("iminty").value=="up"){
+			document.getElementById("previmg").style.display = "none"
+		}
 	}
-}
-function showPic(){
-	if (document.getElementById("pic").value != null && document.getElementById("pic").value != "" && document.getElementById("iminty").value!="up"){
-		document.getElementById("previmg").style.display = "block"
-		document.getElementById("previmg").src = document.getElementById("pic").value;
-	}else if (document.getElementById("iminty").value=="up"){
-		document.getElementById("previmg").style.display = "none"
+	function prev(img){
+		document.getElementById("previmg").src = img;
 	}
-}
-function prev(img){
-	document.getElementById("previmg").src = img;
-}
-function imgUpChange(){
-	document.getElementById("previmg").src = "";
-	elem = document.getElementById("picType");
-	type = document.getElementById("iminty").value;
-	str = "<td colspan='2'>";
-	if (type=="url"){
-		str += "<input type='text' id='pic' style='width:100%;' onchange='showPic()'/></td>";
-		elem.innerHTML = str;
-	}else if (type=="prev"){
-		str += "<select id='pic' style='width:100%;' onchange='showPic()'><?php include "picLookup.php" ?></select></td>";
-		elem.innerHTML = str;
-	}else if (type=="up"){
-		str += "<input type='file' id='pic' name='pic' style='width:100%;' onchange='showPic()'/></td>";
-		elem.innerHTML = str;
+	function imgUpChange(){
+		document.getElementById("previmg").src = "";
+		elem = document.getElementById("picType");
+		type = document.getElementById("iminty").value;
+		str = "<td colspan='2'>";
+		if (type=="url"){
+			str += "<input type='text' id='pic' style='width:100%;' onchange='showPic()'/></td>";
+			elem.innerHTML = str;
+		}else if (type=="prev"){
+			str += "<select id='pic' style='width:100%;' onchange='showPic()'><?php include "picLookup.php" ?></select></td>";
+			elem.innerHTML = str;
+		}else if (type=="up"){
+			str += "<input type='file' id='pic' name='pic' style='width:100%;' onchange='showPic()'/></td>";
+			elem.innerHTML = str;
+		}
 	}
-}
 </script>
 <script type="text/javascript" src="pagecreator.js"></script>
 <script type="text/javascript" src="ajax.js"></script>
