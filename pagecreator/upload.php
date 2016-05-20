@@ -23,9 +23,14 @@ if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg
     $uploadOk = 0;
 }
 // Check if $uploadOk is set to 0 by an error
-if ($uploadOk == 0) {
-// if everything is ok, try to upload file
-} else {
-    move_uploaded_file($_FILES["picUp"]["tmp_name"], $target_file))\
+if ($uploadOk != 0) {
+  if (move_uploaded_file($_FILES["picUp"]["tmp_name"], $target_file)) {
+      echo "The file ". basename( $_FILES["picUp"]["name"]). " has been uploaded.";
+  } else {
+      echo "Sorry, there was an error uploading your file.";
+  }
+  echo "Success";
+}else{
+  echo "Nope";
 }
 ?>
