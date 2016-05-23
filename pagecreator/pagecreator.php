@@ -39,7 +39,7 @@ session_start();
 		elem = document.getElementById("picType");
 		type = document.getElementById("iminty").value;
 		str = "<td colspan='2'>";
-		if (type=="url"){
+		if (type=="url") {
 			str += "<input type='text' id='pic' style='width:100%;' onchange='showPic()'/></td>";
 			elem.innerHTML = str;
 		}else if (type=="prev"){
