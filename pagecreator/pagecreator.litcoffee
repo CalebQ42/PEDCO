@@ -1,18 +1,26 @@
 # Compile to JavaScript before uploading to server.
+insertAtCursor = (myField, begin, end) ->
+  start = myField.selectionStart
+  finish = myField.selectionEnd
+  sltd = myField.value.substring(start, finish)
+  txt = ''
+  if end == ''
+    txt = myField.value.substring(0, finish)
+    txt += begin
+    txt += myField.value.substring(finish, myField.value.length)
+  else
+    txt = myField.value.substring(0, start)
+    txt += begin
+    txt += myField.value.substring(start, finish)
+    txt += end
+    txt += myField.value.substring(finish, myField.value.length)
+  myField.innerHTML = txt
+  return
+
 blackClick = ->
   document.getElementById('input').innerHTML = ''
   document.getElementById('input').style.display = 'none'
   document.getElementById('blackout').style.display = 'none'
-  return
-
-image = ->
-  internal = '<table><tr><td>Image Input Type:</td><td><select id="iminty" onchange="imgUpChange();showPic();"><option value="url">URL</option><option value="prev">Previously Uploaded Image</option><option value="up">Upload Image</option></select></td></tr><tr id="picType"></tr><tr><td>Height:</td><td><input type="text" id="ht" style="width:100%;"></input></td></tr><tr><td>Width:</td><td><input type="text" id="wt" style="width:100%;"></input></td></tr><tr><td>Title:</td><td><input type="text" id="title" style="width:100%;"></input></td></tr><tr><td>Alternate Text:</td><td><input type="text" id="alt" style="width:100%;"></input></td></tr><tr><td>Location:</td><td><select id="fl"><option value="il">Inline</option><option value="lf">Left</option><option value="rt">Right</option></select></td></tr><tr><td colspan="2"><img id="previmg" height="100"/></td></tr></table><button onclick="imgIn()">Add</button><button onclick="blackClick()">Cancel</button>'
-  elem = document.getElementById('input')
-  elem.innerHTML = internal
-  document.getElementById('blackout').style.display = 'block'
-  elem.style.display = 'block'
-  imageUpChange()
-  showPic()
   return
 
 imgIn = ->

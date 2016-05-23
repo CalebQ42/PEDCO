@@ -5,30 +5,22 @@ session_start();
 <head>
 <title>Page Form</title>
 <script type="text/javascript">
-	function insertAtCursor(myField, begin, end) {
-		var start = myField.selectionStart;
-		var finish = myField.selectionEnd;
-		var sltd = myField.value.substring(start,finish);
-		var txt = ""
-		if (end == ""){
-			txt = myField.value.substring(0,finish);
-			txt += begin;
-			txt += myField.value.substring(finish,myField.value.length);
-		}else{
-			txt = myField.value.substring(0,start);
-			txt += begin;
-			txt += myField.value.substring(start,finish);
-			txt += end;
-			txt += myField.value.substring(finish,myField.value.length);
-		}
-		myField.innerHTML = txt;
+	function image() {
+	  var elem, internal;
+	  internal = '<table><tr><td>Image Input Type:</td><td><select id="iminty" onchange="imgUpChange();showPic();"><option value="url">URL</option><option value="prev">Previously Uploaded Image</option><option value="up">Upload Image</option></select></td></tr><tr id="picType"></tr><tr><td>Height:</td><td><input type="text" id="ht" style="width:100%;"></input></td></tr><tr><td>Width:</td><td><input type="text" id="wt" style="width:100%;"></input></td></tr><tr><td>Title:</td><td><input type="text" id="title" style="width:100%;"></input></td></tr><tr><td>Alternate Text:</td><td><input type="text" id="alt" style="width:100%;"></input></td></tr><tr><td>Location:</td><td><select id="fl"><option value="il">Inline</option><option value="lf">Left</option><option value="rt">Right</option></select></td></tr><tr><td colspan="2"><img id="previmg" height="100"/></td></tr></table><button onclick="imgIn()">Add</button><button onclick="blackClick()">Cancel</button>';
+	  elem = document.getElementById('input');
+	  elem.innerHTML = internal;
+	  document.getElementById('blackout').style.display = 'block';
+	  elem.style.display = 'block';
+	  imageUpChange();
+	  showPic();
 	}
 	function showPic(){
 		if (document.getElementById("pic").value != null && document.getElementById("pic").value != "" && document.getElementById("iminty").value!="up"){
-			document.getElementById("previmg").style.display = "block"
+			document.getElementById("previmg").style.display = "block";
 			document.getElementById("previmg").src = document.getElementById("pic").value;
 		}else if (document.getElementById("iminty").value=="up"){
-			document.getElementById("previmg").style.display = "none"
+			document.getElementById("previmg").style.display = "none";
 		}
 	}
 	function prev(img){
