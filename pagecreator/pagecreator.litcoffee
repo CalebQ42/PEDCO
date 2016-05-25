@@ -14,7 +14,7 @@ insertAtCursor = (myField, begin, end) ->
     txt += myField.value.substring(start, finish)
     txt += end
     txt += myField.value.substring(finish, myField.value.length)
-  myField.innerHTML = txt
+  myField.value = txt
   return
 
 blackClick = ->
@@ -30,7 +30,7 @@ imgIn = ->
     ht = document.getElementById("ht").value
     wt = document.getElementById("wt").value
     alt = document.getElementById("alt").value
-    title = document.getElementById("title").value
+    title = document.getElementById("ttl").value
     flt = document.getElementById("fl").value
     str = "[img"
     if ht != ""
@@ -62,7 +62,7 @@ imgIn = ->
     else
       str += "]" + pic + "[/img]"
     blackClick()
-    insertAtCursor(html,str,"")
+    insertAtCursor(document.getElementById("html"),str,"")
   else
     blackClick()
   return
@@ -87,7 +87,7 @@ lkIn = ->
     else
       str += ']' + url + '[/url]'
     blackClick()
-    insertAtCursor(html, str,"")
+    insertAtCursor(document.getElementById("html"), str,"")
   return
 
 youtube = ->
@@ -120,69 +120,69 @@ ytIn = ->
         str += ' right'
     str += ']' + id + '[/youtube]'
     blackClick()
-    insertAtCursor(html,str,"")
+    insertAtCursor(document.getElementById("html"),str,"")
   return
 
 colorText = ->
   color = prompt('Hexadecimal or predefined color')
   if color != '' and color != null
     str = '[color=' + color + ']Text'
-    insertAtCursor(html, str,"[/color]")
+    insertAtCursor(document.getElementById("html"), str,"[/color]")
   return
 
 customFont = ->
   font = prompt('Enter font family name (must be web friendly)')
   if font != '' and font != null
     str = '[font=' + font + ']Text'
-    insertAtCursor(html, str,"[/font]")
+    insertAtCursor(document.getElementById("html"), str,"[/font]")
   return
 
 bold = ->
-  insertAtCursor(html, '[b]',"[/b]")
+  insertAtCursor(document.getElementById("html"), '[b]',"[/b]")
   return
 
 underline = ->
-  insertAtCursor(html, '[u]',"[/u]")
+  insertAtCursor(document.getElementById("html"), '[u]',"[/u]")
   return
 
 italics = ->
-  insertAtCursor(html, '[i]',"[/i]")
+  insertAtCursor(document.getElementById("html"), '[i]',"[/i]")
   return
 
 strikethrough = ->
-  insertAtCursor(html, '[s]',"[/s]")
+  insertAtCursor(document.getElementById("html"), '[s]',"[/s]")
   return
 
 unorderedList = ->
-  insertAtCursor(html, '[ul]','[/ul]')
+  insertAtCursor(document.getElementById("html"), '[ul]','[/ul]')
   return
 
 orderedList = ->
-  insertAtCursor(html, '[ol]','[/ol]')
+  insertAtCursor(document.getElementById("html"), '[ol]','[/ol]')
   return
 
  heading1 = ->
-   insertAtCursor(html, '[t1]','[/t1]')
+   insertAtCursor(document.getElementById("html"), '[t1]','[/t1]')
    return
 
  heading2 = ->
-   insertAtCursor(html, '[t2]','[/t2]')
+   insertAtCursor(document.getElementById("html"), '[t2]','[/t2]')
    return
 
  heading3 = ->
-   insertAtCursor(html, '[t3]','[/t3]')
+   insertAtCursor(document.getElementById("html"), '[t3]','[/t3]')
    return
 
  heading4 = ->
-   insertAtCursor(html, '[t4]','[/t4]')
+   insertAtCursor(document.getElementById("html"), '[t4]','[/t4]')
    return
 
  heading5 = ->
-   insertAtCursor(html, '[t5]','[/t5]')
+   insertAtCursor(document.getElementById("html"), '[t5]','[/t5]')
    return
 
 heading6 = ->
-  insertAtCursor(html, '[t6]','[/t6]')
+  insertAtCursor(document.getElementById("html"), '[t6]','[/t6]')
   return
 
  disableCat = ->
